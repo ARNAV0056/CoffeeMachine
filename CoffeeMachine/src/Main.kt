@@ -1,42 +1,45 @@
 package arnav.CoffeeMachine
-fun main(){
-    println("What is your name?")
-    val Name= readln()
-    println("how much sugar do you want ")
-    val sugarCount:Int= readln().toInt()
-
-    makeCoffee(Name,sugarCount)//called a function makeCoffee
+data class coffeeDetails(val sugarCount: Int,val Name: String,val size:String,val cream:String,val milk:String){//constructor
 
 }
-fun makeCoffee(Name:String,sugarCount :Int){
-    println("$Name took $sugarCount cube of Sugar in their coffee")
+fun main(){
+    //println("What is your name?")
+    //val Name= readln()
+    //println("how much sugar do you want ")
+    //val sugarCount:Int= readln().toInt()
+
+    //makeCoffee(Name,sugarCount)//called a function makeCoffee
+    val coffeeforArnav=coffeeDetails(sugarCount=0, Name = "ARNAV", size = "XL", cream = "NONE", milk = "NORMAL")
+    makeCoffee(coffeeforArnav)
+}
+fun makeCoffee(coffeDetails: coffeeDetails) {
+    println("${coffeDetails.Name} took ${coffeDetails.sugarCount}  cube of Sugar of ${coffeDetails.size} size with ${coffeDetails.milk} milk in their coffee")
     println("Which coffee you want")
-    val button= readln()
+    val button = readln()
     println("What kind of beans you want?")
-    val beans= readln()
+    val beans = readln()
     println("What kind of milk you want?")
-    var milk= readln()
-    when(button) {
+    var milk = readln()
+    when (button) {
         "Americano" -> println("OK! now  your Americano is brewed")
         "Cappuccino" -> println("OK! now your cappuccino is brewed ")
-        else->{
+        else -> {
             println("Sorry we do not have that right now")
         }
 
     }
-    when(beans){
-        "Roasted"-> println("OK! Roasted Beans are selected")
-        "Classic"-> println("OK! Classic Beans are selected")
+    when (beans) {
+        "Roasted" -> println("OK! Roasted Beans are selected")
+        "Classic" -> println("OK! Classic Beans are selected")
     }
-    when(milk){
-        "Almond"-> println("OK! Almond milk has been selected ")
-        "Soy"-> println("OK! Soy milk has been selected")
-        "Normal"-> println("OK! Normal milk has been selected")
+    when (milk) {
+        "Almond" -> println("OK! Almond milk has been selected ")
+        "Soy" -> println("OK! Soy milk has been selected")
+        "Normal" -> println("OK! Normal milk has been selected")
     }
-    if(sugarCount==0){
-        println( println("$button with $beans beans and $milk milk for $Name with 0 sugar is now ready!!!"))
+    if (coffeDetails.sugarCount == 0) {
+        println(println("$button with $beans beans and ${coffeDetails.milk} milk for ${coffeDetails.Name} with 0 sugar of ${coffeDetails.size} size with ${coffeDetails.milk} milk is now ready!!!"))
     }
-    else{
-    println("$button with $beans beans and $milk milk for $Name with $sugarCount cube of sugar is now ready!!!")
-    }}
+}
+
 
